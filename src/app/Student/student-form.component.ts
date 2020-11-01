@@ -34,9 +34,7 @@ model = new student (0,'', '', '', '','');
    PageLoad()
    {
     this.apiService.getStudents().subscribe((res)=>{
-      console.log(res);
-          this.studentList = res;
-          console.log(this.studentList);    
+          this.studentList = res;  
     });
     
       this.apiService.getDepartment().subscribe((res)=>{
