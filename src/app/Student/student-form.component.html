@@ -1,0 +1,99 @@
+
+
+
+  <div>
+    
+
+<div class="table-responsive" *ngIf="!addnewstudent" > 
+  <table class ="table">
+    <thead>
+      <th>Name</th>
+      <th>Gender</th>
+
+      <th>DOB</th>
+      <th>Email</th>
+      <th>ContactNo</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let st of studentList">
+        <td>
+          {{st.Name}}
+          
+        </td>
+        <td>
+          {{st.Gender}}
+        </td>
+        <td>
+          {{st.DOB}}
+        </td>
+        <td>
+          {{st.Email}}
+        </td>
+        <td>
+          {{st.ContactNo}}
+        </td>
+        <button type="add" class="btn btn-success"  (click)="editstudent(st)"          >Edit</button>
+        <button type="add" class="btn btn-success"  (click)="deletestudent(st._id)"          >Delete</button>
+      </tr>
+    </tbody>
+  </table>
+  
+
+  <button type="add" class="btn btn-success"  (click)="addstudent()"          >Add Student</button>
+
+</div>
+
+
+
+
+    <div *ngIf="addnewstudent">
+      <div>
+      <h1>Student Form</h1>
+      <form (ngSubmit)="onSubmit()" #studentForm="ngForm">
+<div class="form-group"></div>
+  <label for="name">Name</label>
+  <input type="text" class="form-control" id="name"
+  required
+  [(ngModel)]="model.Name" name="name">
+
+  <label for="gender">Gender</label>
+  <input type="text" class="form-control" id="gender"
+  required
+  [(ngModel)]="model.Gender" name="gender">
+
+  <label for="dob">DOB</label>
+  <input type="text" class="form-control" id="dob"
+  required
+  [(ngModel)]="model.DOB" name="dob">
+
+  <label for="email">Email;</label>
+  <input type="text" class="form-control" id="email"
+  required
+  [(ngModel)]="model.Email" name="email">
+
+  <label for="contactno">ContactNo;</label>
+  <input type="text" class="form-control" id="contactno"
+  required
+  [(ngModel)]="model.ContactNo" name="contactno">
+
+  
+
+    <label for="dept">Departments</label>
+    <select class="form-control" id="dept" required>
+      <option *ngFor="let dep of departmentList" [value]="dep">{{dep.DepartmentName}}</option>
+    </select>
+  
+
+  <button type="submit" class="btn btn-success" [disabled]="!studentForm.form.valid">Save Student</button>
+  <button type="cancel" class="btn btn-success"  (click)="cancel()"          >Cancel</button>
+  
+    </form>
+  </div>
+
+<div  *ngIf="error" >
+  <label>
+    something went wrong!
+  </label>
+</div>
+  
