@@ -9,6 +9,6 @@ export class student {
       public ContactNo: string
       
       
-    ) {  }
+    ) {}
   
   }

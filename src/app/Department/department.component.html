@@ -1,0 +1,48 @@
+<div class="table-responsive" *ngIf="!addnewdept" > 
+<div class="table-responsive" >
+    <table class ="table">
+      <thead>
+        <th>Name</th>
+        
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dt of deptlist">
+          <td>
+            {{dt.DepartmentName}}
+            
+
+          </td>
+          <td>
+            <button type="add" class="btn btn-success"  (click)="editdept(dt)"          >Edit</button>
+            <button type="add" class="btn btn-success"  (click)="deletedept(dt._id)"    >Delete</button>
+            </td> 
+        </tr>
+        </tbody>
+    </table>
+    <button type="add" class="btn btn-success"  (click)="adddept()"          >Add Department</button>
+
+</div>
+</div>
+<div *ngIf="addnewdept">
+    <div>
+    <h1>Department Form</h1>
+    <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
+<div class="form-group">
+<label for="name">Name</label>
+<input type="text" class="form-control" id="name"
+required
+[(ngModel)]="model.DepartmentName" name="name">
+</div>
+<button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">Save Department</button>
+  <button type="cancel" class="btn btn-success"  (click)="cancel()"          >Cancel</button>
+  
+    </form>
+  </div>
+
+<div  *ngIf="error" >
+  <label>
+    something went wrong!
+  </label>
+</div>
+</div>
