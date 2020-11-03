@@ -13,7 +13,9 @@
       <th>DOB</th>
       <th>Email</th>
       <th>ContactNo</th>
-      <th>Action</th>
+      <th>Department</th>
+
+      <th> Action</th>
     </thead>
     <tbody>
       <tr *ngFor="let st of studentList">
@@ -30,8 +32,12 @@
         <td>
           {{st.Email}}
         </td>
+        
         <td>
           {{st.ContactNo}}
+        </td>
+        <td>
+          {{st.Dept.DepartmentName}}
         </td>
         <button type="add" class="btn btn-success"  (click)="editstudent(st)"          >Edit</button>
         <button type="add" class="btn btn-success"  (click)="deletestudent(st._id)"          >Delete</button>
@@ -67,21 +73,24 @@
   required
   [(ngModel)]="model.DOB" name="dob">
 
-  <label for="email">Email;</label>
+  <label for="email">Email</label>
   <input type="text" class="form-control" id="email"
   required
   [(ngModel)]="model.Email" name="email">
 
-  <label for="contactno">ContactNo;</label>
+  <label for="contactno">ContactNo</label>
   <input type="text" class="form-control" id="contactno"
   required
   [(ngModel)]="model.ContactNo" name="contactno">
 
   
 
+  
+    
     <label for="dept">Departments</label>
-    <select class="form-control" id="dept" required>
-      <option *ngFor="let dep of departmentList" [value]="dep">{{dep.DepartmentName}}</option>
+    <select class="form-control" id="dept" required  
+    name="dep" [(ngModel)]="dept"  >
+      <option *ngFor="let dep of departmentList" [ngValue]="dep">{{dep.DepartmentName}}</option>
     </select>
   
 

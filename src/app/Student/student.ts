@@ -1,3 +1,5 @@
+import { department } from '../Department/department';
+
 export class student {
 
     constructor(
@@ -6,7 +8,8 @@ export class student {
       public Gender: string,
       public DOB : string,
       public Email: string,
-      public ContactNo: string
+      public ContactNo: string,
+      public Dept: department
       
       
     ) {}

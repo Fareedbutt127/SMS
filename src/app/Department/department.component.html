@@ -10,13 +10,16 @@
         <tr *ngFor="let dt of deptlist">
           <td>
             {{dt.DepartmentName}}
-            
-
           </td>
-          <td>
+            <td>
+              {{dt.Name}}
+              
+            </td>
+          
+          
             <button type="add" class="btn btn-success"  (click)="editdept(dt)"          >Edit</button>
             <button type="add" class="btn btn-success"  (click)="deletedept(dt._id)"    >Delete</button>
-            </td> 
+            
         </tr>
         </tbody>
     </table>

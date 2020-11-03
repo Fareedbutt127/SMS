@@ -1,6 +1,7 @@
 //import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ɵConsole } from '@angular/core';
 import { ApiService } from '../api.service';
+import { department } from '../Department/department';
 
 
 import { student } from './student';
@@ -20,10 +21,11 @@ export class StudentFormComponent {
     
 
 
-model = new student (0,'', '', '', '','');
+model = new student (0,'', '', '', '','',new department(0,"abc"));
     submitted = false;
     studentList:any;
-    departmentList:any;
+    departmentList:department;
+    dept=new department(0,""); 
     constructor(private apiService: ApiService){}
     
     ngOnInit()
@@ -35,23 +37,27 @@ model = new student (0,'', '', '', '','');
    {
     this.apiService.getStudents().subscribe((res)=>{
           this.studentList = res;  
+          console.log("check student list",this.studentList);
+          
     });
     
-      this.apiService.getDepartment().subscribe((res)=>{
+      this.apiService.getDepartment().subscribe((res:department)=>{
         console.log(res);
             this.departmentList=res;
       });
 
    }
 
-    onSubmit() { this.submitted = true;
-
+    onSubmit() { 
+        this.submitted = true;
+        this.model.Dept.DepartmentName=this.dept.DepartmentName;
+        this.model.Dept._id=this.dept._id;
         console.log('Studentmodel',this.model);
-        this.apiService.createStudent(this.model).subscribe((res)=>{
+        this.apiService. createStudent(this.model).subscribe((res)=>{
         
           console.log('studentResponse',res);
 
-
+  
          // if (res['status']==200) {
             this.sucess=true;
             this.PageLoad();
@@ -82,11 +88,17 @@ model = new student (0,'', '', '', '','');
 
     editstudent(obj:student)
     {
+      console.log("obj check",obj,this.dept);
       this.model=obj;
+      this.dept.DepartmentName=obj.Dept.DepartmentName;
+      this.dept._id=obj.Dept._id; 
       this.addnewstudent=true;
     }
-    
-    
+
+    change(obj)
+    {
+     console.log(obj);
+    }
 
     deletestudent(id)
     {
