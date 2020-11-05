@@ -10,8 +10,8 @@ import { department } from './department';
 })
 
 export class departmentcomp { 
-
-    addnewdept=false;
+ 
+    addnewdept=false; 
     sucess=false;
     Cancel=false
     error=false;

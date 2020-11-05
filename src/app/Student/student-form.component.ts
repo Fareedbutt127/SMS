@@ -4,17 +4,20 @@ import { ApiService } from '../api.service';
 import { department } from '../Department/department';
 
 
+
 import { student } from './student';
 
 @Component({
+  
   selector: 'app-student-form',
-  templateUrl: './student-form.component.html'
-  //styleUrls: ['./student-form.component.css']
+  templateUrl: './student-form.component.html',
+  styleUrls: ['./student-form.component.css']
 })
 
-export class StudentFormComponent { 
+export class StudentFormComponent {
+  
  
-    error=false;
+    error=false; 
     addnewstudent=false;
     sucess=false;
     Cancel=false;
@@ -45,7 +48,7 @@ model = new student (0,'', '', '', '','',new department(0,"abc"));
         console.log(res);
             this.departmentList=res;
       });
-
+ 
    }
 
     onSubmit() { 
@@ -89,12 +92,12 @@ model = new student (0,'', '', '', '','',new department(0,"abc"));
     editstudent(obj:student)
     {
       console.log("obj check",obj,this.dept);
-      this.model=obj;
+      this.model=obj;  
       this.dept.DepartmentName=obj.Dept.DepartmentName;
       this.dept._id=obj.Dept._id; 
-      this.addnewstudent=true;
+      this.addnewstudent=true; 
     }
-
+ 
     change(obj)
     {
      console.log(obj);

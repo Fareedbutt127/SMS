@@ -3,11 +3,11 @@
 
   <div>
     
-
+    
 <div class="table-responsive" *ngIf="!addnewstudent" > 
   <table class ="table">
-    <thead>
-      <th>Name</th>
+    <thead> 
+      <th>Name</th> 
       <th>Gender</th>
 
       <th>DOB</th>
@@ -39,34 +39,52 @@
         <td>
           {{st.Dept.DepartmentName}}
         </td>
-        <button type="add" class="btn btn-success"  (click)="editstudent(st)"          >Edit</button>
-        <button type="add" class="btn btn-success"  (click)="deletestudent(st._id)"          >Delete</button>
+        <button  style="background-color:rgb(58, 58, 158);" type="add" class="btn btn-success"  (click)="editstudent(st)"          >Edit</button> &nbsp;
+        <button  style="background-color:rgb(58, 58, 158);" type="add" class="btn btn-success"  (click)="deletestudent(st._id)"          >Delete</button>
       </tr>
     </tbody>
   </table>
   
 
-  <button type="add" class="btn btn-success"  (click)="addstudent()"          >Add Student</button>
+  <button  style="background-color:rgb(58, 58, 158);" type="add" class="btn btn-success"  (click)="addstudent()"          >Add Student</button>
 
 </div>
 
 
 
-
     <div *ngIf="addnewstudent">
       <div>
-      <h1>Student Form</h1>
+        <style>
+        h1 {
+          color: rgb(58, 58, 158);
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 300%;
+        
+        } </style>
+      <h1 > Student Form</h1>
       <form (ngSubmit)="onSubmit()" #studentForm="ngForm">
 <div class="form-group"></div>
   <label for="name">Name</label>
-  <input type="text" class="form-control" id="name"
+  <input  style="color:rgb(58, 58, 158);" type="text" class="form-control" id="name"
   required
   [(ngModel)]="model.Name" name="name">
 
-  <label for="gender">Gender</label>
-  <input type="text" class="form-control" id="gender"
-  required
-  [(ngModel)]="model.Gender" name="gender">
+  <label for="gender">Gender</label> 
+  
+
+  <form #myForm="ngForm" (submit)="templateForm(myForm.value)" novalidate>
+    <div>
+       <input id="Male" type="radio" class="gender-spacing" value="Male" name="gender" [(ngModel)]="model.Gender" name="gender">  
+       <label class="custom-control-label gender-spacing" for="Male">Male</label> 
+       <input id="Female" type="radio" class="gender-spacing" value="Female" name="gender" [(ngModel)]="model.Gender" name="gender"> 
+       <label for="Female">Female
+       
+      </label>
+    </div>
+  
+    
+  </form>
+  
 
   <label for="dob">DOB</label>
   <input type="text" class="form-control" id="dob"
@@ -94,8 +112,10 @@
     </select>
   
 
-  <button type="submit" class="btn btn-success" [disabled]="!studentForm.form.valid">Save Student</button>
-  <button type="cancel" class="btn btn-success"  (click)="cancel()"          >Cancel</button>
+
+  <button style="background-color:rgb(58, 58, 158);" type="submit" class="btn btn-success button-style"  [disabled]="!studentForm.form.valid">Save Student</button>
+  
+  <button  style="background-color:rgb(58, 58, 158); margin:10px " type="cancel" class="btn btn-success"  (click)="cancel()"          >Cancel</button>
   
     </form>
   </div>
@@ -105,4 +125,4 @@
     something went wrong!
   </label>
 </div>
-  
+   
